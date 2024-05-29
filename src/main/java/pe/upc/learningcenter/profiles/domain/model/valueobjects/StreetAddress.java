@@ -1,14 +1,16 @@
 package pe.upc.learningcenter.profiles.domain.model.valueobjects;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Embeddable
 public record StreetAddress(
-        String street,
-        String number,
-        String city,
-        String postalCode,
-        String country
+        @NotBlank String street,
+        @NotBlank String number,
+        @NotBlank String city,
+        @NotBlank String postalCode,
+        @NotBlank String country
 ) {
 
     public StreetAddress() {

@@ -1,9 +1,10 @@
 package pe.upc.learningcenter.profiles.domain.model.valueobjects;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
 
 @Embeddable
-public record PersonName(String firstName, String lastName) {
+public record PersonName(@NotBlank String firstName, @NotBlank String lastName) {
     public PersonName() {
         this(null, null);
     }
