@@ -1,6 +1,7 @@
 package pe.upc.learningcenter.profiles.interfaces.rest;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import pe.upc.learningcenter.profiles.interfaces.rest.transform.ProfileResourceF
 
 @RestController
 @RequestMapping(value = "/api/v1/profiles", produces = MediaType.APPLICATION_JSON_VALUE)
+@Tag(name="Profile", description = "Profile management endpoints")
 public class ProfileController {
 
     private final ProfileQueryService profileQueryService;
