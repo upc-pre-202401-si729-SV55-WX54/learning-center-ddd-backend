@@ -1,10 +1,9 @@
-package pe.upc.learningcenter.profiles.application.services;
+package pe.upc.learningcenter.profiles.application.internal;
 
 import org.springframework.stereotype.Service;
 import pe.upc.learningcenter.profiles.domain.model.aggregates.Profile;
 import pe.upc.learningcenter.profiles.domain.model.commands.CreateProfileCommand;
 import pe.upc.learningcenter.profiles.domain.model.valueobjects.EmailAddress;
-import pe.upc.learningcenter.profiles.domain.model.valueobjects.PersonName;
 import pe.upc.learningcenter.profiles.domain.services.ProfileCommandService;
 import pe.upc.learningcenter.profiles.infrastructure.persistence.jpa.repositories.ProfileRepository;
 
