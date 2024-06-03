@@ -1,4 +1,4 @@
-package pe.upc.learningcenter.profiles.application.services;
+package pe.upc.learningcenter.profiles.application.internal;
 
 import org.springframework.stereotype.Service;
 import pe.upc.learningcenter.profiles.domain.model.aggregates.Profile;
@@ -8,7 +8,6 @@ import pe.upc.learningcenter.profiles.domain.model.queries.GetProfileByNameQuery
 import pe.upc.learningcenter.profiles.domain.services.ProfileQueryService;
 import pe.upc.learningcenter.profiles.infrastructure.persistence.jpa.repositories.ProfileRepository;
 
-import javax.management.Query;
 import java.util.Optional;
 
 @Service
