@@ -35,12 +35,19 @@ public class ProfilesContextFacade {
      * @param street the street address
      * @param number the number
      * @param city the city
-     * @param state the state
-     * @param zipCode the zip code
+     * @param postalCode the postalCode
+     * @param country the country
      * @return the profile id
      */
-    public Long createProfile(String firstName, String lastName, String email, String street, String number, String city, String state, String zipCode) {
-        var createProfileCommand = new CreateProfileCommand(firstName, lastName, email, street, number, city, state, zipCode);
+    public Long createProfile(String firstName,
+                              String lastName,
+                              String email,
+                              String street,
+                              String number,
+                              String city,
+                              String postalCode,
+                              String country) {
+        var createProfileCommand = new CreateProfileCommand(firstName, lastName, email, street, number, city, postalCode, country);
         var profile = profileCommandService.handle(createProfileCommand);
         if (profile.isEmpty()) return 0L;
         return profile.get().getId();
