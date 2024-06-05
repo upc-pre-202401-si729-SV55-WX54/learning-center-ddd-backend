@@ -1,5 +1,8 @@
 package pe.upc.learningcenter.learning.domain.model.valueobjects;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public record ProfileId(Long profileId) {
     public ProfileId{
         if(profileId < 0){
