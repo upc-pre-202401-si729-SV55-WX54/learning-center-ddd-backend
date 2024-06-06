@@ -15,7 +15,7 @@ import pe.upc.learningcenter.profiles.interfaces.rest.transform.CreateProfileCom
 import pe.upc.learningcenter.profiles.interfaces.rest.transform.ProfileResourceFromEntityAssembler;
 
 @RestController
-@RequestMapping(value = "/api/v1/profiles", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v2/profiles", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name="Profile", description = "Profile management endpoints")
 public class ProfileController {
 
