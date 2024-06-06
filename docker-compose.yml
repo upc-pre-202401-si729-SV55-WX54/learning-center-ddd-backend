@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    image: 'docker-springboot-postgres:latest'
+    build:
+        context: .
+    container_name: app
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/upc
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "80:8080"
+
+
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=upc
+    ports:
+      - "5432:5432"
+
