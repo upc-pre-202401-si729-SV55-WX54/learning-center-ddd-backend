@@ -6,10 +6,12 @@ services:
     build:
       context: .
     container_name: app
+    depends_on:
+      - db
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/upc
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/upc
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
     ports:
