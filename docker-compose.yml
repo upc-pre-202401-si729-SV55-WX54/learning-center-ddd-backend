@@ -27,3 +27,13 @@ services:
     ports:
       - "5432:5432"
 
+  db2:
+    image: mysql
+    container_name: db2
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=upc
+    ports:
+      - "3306:3306"
+
