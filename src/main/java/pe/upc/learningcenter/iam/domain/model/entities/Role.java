@@ -42,5 +42,7 @@ public class Role {
         }
         return roles;
     }
-
+    public static Role toRoleFromName(String name) {
+        return new Role(Roles.valueOf(name));
+    }
 }

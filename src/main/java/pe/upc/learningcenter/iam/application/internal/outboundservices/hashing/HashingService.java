@@ -1,4 +1,4 @@
-package pe.upc.learningcenter.iam.application.internal.outbounservices.hashing;
+package pe.upc.learningcenter.iam.application.internal.outboundservices.hashing;
 
 public interface HashingService {
 

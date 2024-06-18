@@ -1,4 +1,4 @@
-package pe.upc.learningcenter.iam.application.internal.outbounservices.tokens;
+package pe.upc.learningcenter.iam.application.internal.outboundservices.tokens;
 
 public interface TokenService {
 
