@@ -6,7 +6,7 @@ import pe.upc.learningcenter.learning.domain.model.aggregates.Course;
 import pe.upc.learningcenter.shared.domain.model.entities.AuditableModel;
 
 @Entity
-public class LearningPathItem extends AuditableModel {
+public class    LearningPathItem extends AuditableModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

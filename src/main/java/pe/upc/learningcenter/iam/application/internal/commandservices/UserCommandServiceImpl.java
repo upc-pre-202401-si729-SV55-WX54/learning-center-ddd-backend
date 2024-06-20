@@ -2,6 +2,8 @@ package pe.upc.learningcenter.iam.application.internal.commandservices;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.stereotype.Service;
+import pe.upc.learningcenter.iam.application.internal.outboundservices.hashing.HashigService;
+import pe.upc.learningcenter.iam.application.internal.outboundservices.tokens.TokenService;
 import pe.upc.learningcenter.iam.domain.model.aggregates.User;
 import pe.upc.learningcenter.iam.domain.model.commands.SignInCommand;
 import pe.upc.learningcenter.iam.domain.model.commands.SignUpCommand;
@@ -16,10 +18,14 @@ public class UserCommandServiceImpl implements UserCommandService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final HashigService hashigService;
+    private final TokenService tokenService;
 
-    public UserCommandServiceImpl(final UserRepository userRepository, RoleRepository roleRepository) {
+    public UserCommandServiceImpl(final UserRepository userRepository, RoleRepository roleRepository, HashigService hashigService, TokenService tokenService) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.hashigService = hashigService;
+        this.tokenService = tokenService;
     }
 
     @Override
@@ -29,7 +35,7 @@ public class UserCommandServiceImpl implements UserCommandService {
         }
 
         var roles = command.roles().stream().map(role -> roleRepository.findByName(role.getName()).orElseThrow(()-> new RuntimeException("Role name not found."))).toList();
-        var user = new User(command.username(), command.password(), roles);
+        var user = new User(command.username(), hashigService.encode(command.password()), roles);
         userRepository.save(user);
 
         return userRepository.findByUsername(command.username());
@@ -40,13 +46,11 @@ public class UserCommandServiceImpl implements UserCommandService {
         var user = userRepository.findByUsername(command.username());
         if(user.isEmpty())
             throw new RuntimeException("Username not found");
-        
-        //@TODO : Impements hashing services
-        if(!user.get().getPassword().contentEquals(command.password()))
+
+        if(!hashigService.matches(command.password(), user.get().getPassword()))
             throw new RuntimeException("Wrong password");
 
-        //@TODO: Implements token services
-        var token = "sadf423f424f2.f42342342342.f23432423423eqweqwdasdas==";
+        var token = tokenService.generateToken(user.get().getUsername());
 
         return Optional.of(ImmutablePair.of(user.get(), token));
     }

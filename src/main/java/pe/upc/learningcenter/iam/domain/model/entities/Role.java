@@ -2,10 +2,7 @@ package pe.upc.learningcenter.iam.domain.model.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.With;
+import lombok.*;
 import pe.upc.learningcenter.iam.domain.model.valueobjects.Roles;
 
 @Entity
@@ -13,6 +10,7 @@ import pe.upc.learningcenter.iam.domain.model.valueobjects.Roles;
 @AllArgsConstructor
 @Data
 @With
+@Builder
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
