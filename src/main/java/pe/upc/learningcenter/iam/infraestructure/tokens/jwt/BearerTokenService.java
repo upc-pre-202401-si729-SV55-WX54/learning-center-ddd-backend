@@ -6,7 +6,7 @@ import pe.upc.learningcenter.iam.application.internal.outboundservices.tokens.To
 
 public interface BearerTokenService extends TokenService {
 
-    String getBearerToken(HttpServletRequest request);
+    String getBearerTokenFrom(HttpServletRequest request);
 
     String generateBearerToken(Authentication authentication);
 }

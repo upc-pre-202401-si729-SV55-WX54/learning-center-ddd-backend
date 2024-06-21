@@ -18,17 +18,17 @@ import java.util.function.Function;
 
 @Service
 public class TokenServiceImpl implements BearerTokenService {
+    private final Logger LOGGER = LoggerFactory.getLogger(TokenServiceImpl.class);
 
     private static final String AUTHORIZATION_PARAMETER_NAME = "Authorization";
     private static final String BEARER_TOKEN_PREFIX = "Bearer ";
     private static final int TOKEN_BEGIN_INDEX = 7;
-    private final Logger LOGGER = LoggerFactory.getLogger(TokenServiceImpl.class);
     private final String secret = "wlRUFve73uJkP95NVimqamewoWR3zH0s";
 
     private final int expirationDays = 1;
 
     @Override
-    public String getBearerToken(HttpServletRequest request) {
+    public String getBearerTokenFrom(HttpServletRequest request) {
         String authorizationParam = request.getHeader(AUTHORIZATION_PARAMETER_NAME);
         if (authorizationParam != null && authorizationParam.startsWith(BEARER_TOKEN_PREFIX)) {
             return authorizationParam.substring(TOKEN_BEGIN_INDEX);
