@@ -1,6 +1,19 @@
 version: '3.8'
 
 services:
+  nginx-ssl-proxy:
+    image: danieldent/nginx-ssl-proxy
+    restart: always
+    environment:
+      UPSTREAM: 127.0.0.1:8080
+      SERVERNAME: test.example.com
+      EXTRANAMES: www.test.example.com,test2.example.com
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/etc/letsencrypt"
+
   app:
     image: 'docker-springboot-pg-upc:latest'
     build:
@@ -15,7 +28,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
     ports:
-      - "80:8080"
+      - "8080:8080"
 
   db:
     image: postgres
